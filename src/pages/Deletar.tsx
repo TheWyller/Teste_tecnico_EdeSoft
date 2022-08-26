@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 import Header from "../components/Header";
 import Main from "../components/Main";
+import Modal from "../components/Modal";
 import { IState } from "../interfaces/users.interfaces";
 import { deleteUsersThunk } from "../store/modules/deleteUser/thunks";
 import { useAppDispatch } from "../store/modules/hooks";
@@ -12,6 +13,7 @@ import { listUsersThunk } from "../store/modules/listUsers/thunks";
 function Deletar() {
   const { listUsers } = useSelector<any, IState>((state) => state);
   const [idUser, setIdUser] = useState<number>(0);
+  const [modal, setModal] = useState<boolean>(false);
 
   const dispatch = useAppDispatch();
 
@@ -47,7 +49,18 @@ function Deletar() {
             </option>
           ))}
         </select>
-        <Button onClick={() => deleteUser(idUser)}>Deletar Usuário</Button>
+        <Button onClick={() => setModal(true)}>Deletar Usuário</Button>
+        <Modal isActive={modal}>
+          <Button
+            onClick={() => {
+              deleteUser(idUser);
+              setModal(false);
+            }}
+          >
+            SIM
+          </Button>
+          <Button onClick={() => setModal(false)}>NÃO</Button>
+        </Modal>
       </Main>
     </>
   );

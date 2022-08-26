@@ -65,14 +65,12 @@ export const appearFromLeft = keyframes`
 
 export const appearFromUp = keyframes`
     from {
-        transform:scale(1);
-    }
-
-    50% {
-        transform:scale(1.03)
+        opacity: 0;
+        transform:scale(0.5);
     }
 
     to {
+        opacity: 1;
         transform:scale(1);
     }
 `;
