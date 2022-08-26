@@ -21,6 +21,7 @@ export const MainStyled = styled.main`
   }
   nav {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     justify-content: space-around;
   }
